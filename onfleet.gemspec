@@ -6,7 +6,7 @@ require 'onfleet/version'
 Gem::Specification.new do |spec|
   spec.name          = "onfleet"
   spec.version       = Onfleet::VERSION
-  spec.authors       = ["siddharth@vinsol.com"]
+  spec.authors       = ["Siddharth Sharma"]
   spec.email         = ["siddharth@vinsol.com"]
   spec.summary       = %q{Write a short summary. Required.}
   spec.description   = %q{Write a longer description. Optional.}
