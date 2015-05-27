@@ -23,10 +23,8 @@ module Onfleet
     def call(method, params = {})
       ensure_api_key
       set_api_url
-      Onfleet::API.logger.info "Start Onfleet API Request #{@api_url}"
       params = @default_params.merge(params)
       if (response = send_api_request(method, params))
-        Onfleet::API.logger.info "End Onfleet API Request Response Code: #{response.code}"
         parsed_response = response.parsed_response
         raise_error_with_message(parsed_response) if should_raise_for_response?(response.code)
         parsed_response
@@ -35,7 +33,11 @@ module Onfleet
 
     def send_api_request(method, params)
       begin
-        return HTTParty.send(method, @api_url, :body => MultiJson.dump(params), basic_auth: { username: @api_key }, :timeout => @timeout)
+        Onfleet::API.logger.info "Try Count: #{ @try_count } Start Onfleet API Request #{ @api_url }"
+        response = HTTParty.send(method, @api_url, :body => MultiJson.dump(params), basic_auth: { username: @api_key }, :timeout => @timeout)
+        Onfleet::API.logger.info "Try Count: #{ @try_count } End Onfleet API Request Response Code: #{response.code}"
+        raise OnfleetError, 'Retrying TooManyRequestsError Response Code: 429' if (response.code == 429 && should_retry_if_fails?)
+        return response
       rescue StandardError => e
         Onfleet::API.logger.error "ERROR:#{e} #{e.message}"
         if should_retry_if_fails?
