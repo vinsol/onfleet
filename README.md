@@ -20,8 +20,6 @@ Or install it yourself as:
 
 ## Usage
 
-There are a few ways to use Onfleet:
-
 You can create an instance of the API wrapper:
 
     onfleet = Onfleet::API.new("your_api_key")
