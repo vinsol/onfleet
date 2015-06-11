@@ -1,6 +1,6 @@
 # Onfleet
 
-TODO: Write a gem description
+Onfleet is an API wrapper for [Onfleet's APIs](http://docs.onfleet.com).
 
 ## Installation
 
