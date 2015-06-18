@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Onfleet is an API wrapper for Onfleet's API (http://docs.onfleet.com).}
   spec.description   = spec.summary
   spec.homepage      = 'http://vinsol.com'
+  spec.license       = "MIT"
   spec.required_ruby_version = '>= 1.9.3'
 
   spec.files         = `git ls-files -z`.split("\x0")
