@@ -4,14 +4,15 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'onfleet/version'
 
 Gem::Specification.new do |spec|
+  spec.platform      = Gem::Platform::RUBY
   spec.name          = "onfleet"
   spec.version       = Onfleet::VERSION
   spec.authors       = ["Siddharth Sharma"]
-  spec.email         = ["siddharth@vinsol.com"]
-  spec.summary       = %q{Write a short summary. Required.}
-  spec.description   = %q{Write a longer description. Optional.}
-  spec.homepage      = ""
-  spec.license       = "MIT"
+  spec.email         = "info@vinsol.com"
+  spec.summary       = %q{Onfleet is an API wrapper for Onfleet's API (http://docs.onfleet.com).}
+  spec.description   = spec.summary
+  spec.homepage      = 'http://vinsol.com'
+  spec.required_ruby_version = '>= 1.9.3'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
