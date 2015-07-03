@@ -1,4 +1,5 @@
 require 'onfleet/api'
+require 'uri'
 
 module Onfleet
   class APICategory
@@ -51,7 +52,7 @@ module Onfleet
     end
 
     def set_api_url
-      @api_url = @api_endpoint + @category_name
+      @api_url = URI.encode(@api_endpoint + @category_name)
     end
 
     def raise_error_with_message(parsed_response={})
