@@ -1,4 +1,4 @@
-# Onfleet
+# Onfleet <a href="http://badge.fury.io/rb/onfleet"><img src="https://badge.fury.io/rb/onfleet.svg" alt="Gem Version" height="18"></a>
 
 Onfleet is an API wrapper for [Onfleet's APIs](http://docs.onfleet.com).
 
