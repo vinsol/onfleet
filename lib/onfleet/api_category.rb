@@ -35,7 +35,7 @@ module Onfleet
     def send_api_request(method, params)
       begin
         Onfleet::API.logger.info "Try Count: #{ @try_count } Start Onfleet API Request #{ @api_url }"
-        response = HTTParty.send(method, @api_url, :body => MultiJson.dump(params), basic_auth: { username: @api_key }, :timeout => @timeout)
+        response = HTTParty.send(method, @api_url, :body => MultiJson.dump(params), basic_auth: { username: @api_key }, headers: { 'Content-Type' => 'application/json' }, :timeout => @timeout)
         Onfleet::API.logger.info "Try Count: #{ @try_count } End Onfleet API Request Response Code: #{response.code}"
         raise OnfleetError, 'Retrying TooManyRequestsError Response Code: 429' if (response.code == 429 && should_retry_if_fails?)
         return response
